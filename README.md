@@ -1,9 +1,9 @@
-# AI Career Coach — NVIDIA NIM + MCP (2-Hour Hackathon Project)
+# AI Career Coach - NVIDIA NIM (2-Hour Hackathon Project)
 
 An agentic AI Career Assistant powered by NVIDIA Nemotron (NIM).  
-This app analyzes resumes, identifies skill gaps, retrieves live job openings, and provides personalized improvement suggestions — all autonomously, in real time.
+This app analyzes resumes, identifies skill gaps, retrieves live job openings, and provides personalized improvement suggestions - all autonomously, in real time.
 
-Built for the NVIDIA Developer Hackathon — focusing on innovation, reasoning workflow, and Nemotron integration over UI complexity.
+Built for the NVIDIA Developer Hackathon - focusing on innovation, reasoning workflow, and Nemotron integration over UI complexity.
 
 ---
 
@@ -40,7 +40,6 @@ Personalized Actionable Output
 |-------|-------------|
 | LLM | NVIDIA Nemotron via NIM /v1/chat/completions |
 | Backend | FastAPI (Python 3.10+) |
-| MCP Server | Python MCP service for live job retrieval |
 | Frontend | Minimal HTML, CSS, and JavaScript |
 | External API | Remotive (public job API) |
 
@@ -106,6 +105,5 @@ Top Job Match: SDE Intern – Amazon | Location: Remote
 
 
 ## Key Takeaway
-
 This project is not just a chatbot — it is an autonomous reasoning agent powered by NVIDIA Nemotron.  
 It reads, retrieves, reasons, and rewrites — delivering real career insights in minutes.
