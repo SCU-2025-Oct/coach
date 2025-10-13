@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Career Coach</title>
+
+  <style>
+    :root {
+      --primary: #111827;
+      --accent: #2563eb;
+      --assistant-bg: #ecfdf5;
+      --user-bg: #2563eb;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      margin: 0;
+      background: #f3f4f6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 800px;
+      margin-top: 2rem;
+      gap: 1.5rem;
+    }
+
+    /* Card layout */
+    .card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      width: 100%;
+      padding: 1.8rem;
+      box-sizing: border-box;
+    }
+
+    .upload-card h3 {
+      margin: 0 0 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .upload-card h3::before {
+      content: "📄";
+    }
+
+    .upload-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .upload-actions input[type="file"] {
+      flex: 1;
+    }
+
+    button {
+      border: none;
+      background: var(--accent);
+      color: white;
+      border-radius: 10px;
+      padding: 0.7rem 1.4rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    pre {
+      background: #0b1020;
+      color: #e6edf3;
+      padding: 1rem;
+      border-radius: 10px;
+      overflow: auto;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    /* Chat Section */
+    .chat-card {
+      display: flex;
+      flex-direction: column;
+      height: 70vh;
+      overflow: hidden;
+    }
+
+    .chat-thread {
+      flex: 1;
+      padding: 1rem 1.5rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: #f9fafb;
+      border-radius: 12px;
+    }
+
+    .msg {
+      max-width: 80%;
+      padding: 0.9rem 1.1rem;
+      border-radius: 16px;
+      line-height: 1.6;
+      word-wrap: break-word;
+      animation: fadeIn 0.3s ease-in;
+      font-size: 0.95rem;
+    }
+
+    .user {
+      align-self: flex-end;
+      background: var(--user-bg);
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+
+    .assistant {
+      align-self: flex-start;
+      background: var(--assistant-bg);
+      color: var(--primary);
+      border-bottom-left-radius: 4px;
+    }
+
+    /* Input area */
+    .input-area {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      border-top: 1px solid #e5e7eb;
+      background: #fff;
+      border-radius: 14px;
+      margin-top: 1rem;
+      box-shadow: inset 0 0 0 1px #e5e7eb;
+    }
+
+    textarea {
+      flex: 1;
+      resize: none;
+      border: none;
+      outline: none;
+      border-radius: 12px;
+      padding: 0.8rem;
+      font-family: inherit;
+      font-size: 1rem;
+      background: transparent;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Inline code */
+    .msg code {
+      background: #f3f4f6;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+
+    /* Markdown table styling */
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 0.8rem 0;
+      border-radius: 10px;
+    }
+
+    .markdown-table {
+      border-collapse: collapse;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .markdown-table th, .markdown-table td {
+      border: 1px solid #e5e7eb;
+      padding: 10px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .markdown-table th {
+      background: #f3f4f6;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .markdown-table tr:nth-child(even) {
+      background: #f9fafb;
+    }
+
+    .markdown-table tr:hover {
+      background: #f1f5f9;
+    }
+
+    @media (max-width: 600px) {
+      .msg { max-width: 100%; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>AI Career Coach</header>
+
+  <main>
+    <!-- Upload Resume Card -->
+    <section class="card upload-card">
+      <h3>Upload Resume (PDF/DOCX)</h3>
+      <div class="upload-actions">
+        <input type="file" id="resume" accept=".pdf,.docx" />
+        <button id="analyze">Analyze Resume</button>
+      </div>
+      <pre id="resume_out"></pre>
+    </section>
+
+    <!-- Chat Section -->
+    <section class="card chat-card">
+      <div id="thread" class="chat-thread"></div>
+      <div class="input-area">
+        <textarea id="chat" rows="1" placeholder="Ask your AI coach for advice, feedback, or interview prep..."></textarea>
+        <button id="send">Send</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const API = "http://localhost:8000";
+    const thread = document.getElementById("thread");
+
+    // ✅ Enhanced markdown rendering
+    function renderFormatted(text) {
+      if (!text) return "";
+
+      // Detect Markdown-style tables
+      text = text.replace(
+        /((\|[^\n]+\|[\r\n]+)+)/g,
+        (match) => {
+          const lines = match.trim().split("\n");
+          if (lines.length < 2) return match;
+
+          let html = "<div class='table-wrapper'><table class='markdown-table'>";
+          lines.forEach((line, i) => {
+            if (line.includes("---")) return;
+            const cells = line.split("|").filter(c => c.trim() !== "");
+            if (cells.length === 0) return;
+            const tag = (i === 0) ? "th" : "td";
+            html += "<tr>" + cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join("") + "</tr>";
+          });
+          html += "</table></div>";
+          return html;
+        }
+      );
+
+      // Replace Markdown styles
+      return text
+        .replace(/^#### (.*$)/gim, "<h4>$1</h4>")
+        .replace(/^### (.*$)/gim, "<h3>$1</h3>")
+        .replace(/^## (.*$)/gim, "<h2>$1</h2>")
+        .replace(/^# (.*$)/gim, "<h1>$1</h1>")
+        .replace(/\*\*(.*?)\*\*/gim, "<strong>$1</strong>")
+        .replace(/\*(.*?)\*/gim, "<em>$1</em>")
+        .replace(/`([^`]+)`/gim, "<code>$1</code>")
+        .replace(/\n\n/gim, "<br><br>")
+        .replace(/\n/gim, "<br>");
+    }
+
+    const addMsg = (role, text) => {
+      const div = document.createElement("div");
+      div.className = "msg " + role;
+      div.innerHTML = renderFormatted(text);
+      thread.appendChild(div);
+      thread.scrollTop = thread.scrollHeight;
+    };
+
+    // Resume upload
+    document.getElementById("analyze").onclick = async () => {
+      const f = document.getElementById("resume").files[0];
+      if (!f) { alert("Choose a file"); return; }
+      const fd = new FormData();
+      fd.append("file", f);
+      const r = await fetch(API + "/api/resume", { method: "POST", body: fd });
+      const js = await r.json();
+      document.getElementById("resume_out").textContent = JSON.stringify(js, null, 2);
+      window._resume_text = js.resume_text;
+    };
+
+    // Chat send
+    document.getElementById("send").onclick = async () => {
+      const userText = document.getElementById("chat").value.trim();
+      if (!userText) return;
+      addMsg("user", userText);
+      document.getElementById("chat").value = "";
+      const payload = {
+        messages: [{ role: "user", content: userText }],
+        resume_text: window._resume_text || null
+      };
+      const r = await fetch(API + "/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const js = await r.json();
+      addMsg("assistant", js.reply || JSON.stringify(js));
+    };
+  </script>
+</body>
+</html>
