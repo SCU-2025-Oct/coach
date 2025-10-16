@@ -186,16 +186,16 @@ backend/.venv/bin/python -m uvicorn --app-dir backend app.main:app --reload --po
 A quick, visual story of the app in action.
 
   1) **Launch** - Open the web app. The chat panel and resume upload card are ready.
-  <img src="imagesReadMe/image1.png" alt="1 - App opened: clean chat UI ready" style="max-width:100%; height:auto; border-radius:12px; box-shadow: 4px 4px 12px rgba(0,0,0,0.25);" />
+    <img src="imagesReadMe/image1.png" alt="1 - App opened: clean chat UI ready" style="max-width:100%; height:auto; border-radius:12px; box-shadow: 4px 4px 12px rgba(0,0,0,0.25);" />
 
   2) **Upload** - Select a PDF/DOCX. The filename appears and you can click *Analyze Resume*.
-  <img src="imagesReadMe/image2.png" alt="2 - Resume chosen in uploader" style="max-width:100%; height:auto; border-radius:12px; box-shadow: 4px 4px 12px rgba(0,0,0,0.25);" />
+    <img src="imagesReadMe/image2.png" alt="2 - Resume chosen in uploader" style="max-width:100%; height:auto; border-radius:12px; box-shadow: 4px 4px 12px rgba(0,0,0,0.25);" />
 
   3) **Parse** - The backend extracts resume text and Nemotron begins structured analysis.
-  <img src="imagesReadMe/image3.png" alt="3 - Analysis request sent and JSON/summary area shows parsed text" style="max-width:100%; height:auto; border-radius:12px; box-shadow: 4px 4px 12px rgba(0,0,0,0.25);" />
+    <img src="imagesReadMe/image3.png" alt="3 - Analysis request sent and JSON/summary area shows parsed text" style="max-width:100%; height:auto; border-radius:12px; box-shadow: 4px 4px 12px rgba(0,0,0,0.25);" />
 
   4) **Chat** - Ask questions like “How can I improve my resume for SDE roles?” The agent returns strengths, gaps, and edits.
-  <img src="imagesReadMe/image4.png" alt="4 - Chat asking how to improve resume for SDE roles and assistant feedback rendered" style="max-width:100%; height:auto; border-radius:12px; box-shadow: 4px 4px 12px rgba(0,0,0,0.25);" />
+    <img src="imagesReadMe/image4.png" alt="4 - Chat asking how to improve resume for SDE roles and assistant feedback rendered" style="max-width:100%; height:auto; border-radius:12px; box-shadow: 4px 4px 12px rgba(0,0,0,0.25);" />
 
 
 ## Roadmap
