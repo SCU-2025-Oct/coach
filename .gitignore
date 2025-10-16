@@ -1,0 +1,35 @@
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+backend/.venv/
+
+# --- Python bytecode & caches ---
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.cache/
+.coverage*
+
+# --- Temp & logs ---
+*.log
+*.tmp
+*.swp
+*.swo
+
+# --- Upload/working files ---
+# keep the folder but not its contents
+/tmp/*
+!tmp/.gitkeep
+
+# --- Secrets ---
+.env
+backend/.env
+# optionally ignore variants
+.env.*
+backend/.env.*
+
+# --- OS cruft ---
+.DS_Store
+Thumbs.db
