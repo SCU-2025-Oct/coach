@@ -227,7 +227,7 @@ See **[LICENSE](LICENSE)**. Feel free to adapt and extend!
 |:--:|:--:|:--:|
 | **Gareshma Nagalapatti** | [GitHub](https://github.com/Gareshma) | [LinkedIn](https://www.linkedin.com/in/gareshma/) |
 | **Wineel Wilson Dasari** | [GitHub](https://github.com/wineel/) | [LinkedIn](https://www.linkedin.com/in/wineel/) |
-| **Shanmukha Ganesna** | [GitHub](https://github.com/Shack77) | [LinkedIn](https://www.linkedin.com/in/shanmukha-ganesna-5b5a77205/) |
+| **Shanmukha Ganesna** | [GitHub](https://github.com/Shack77) | [LinkedIn](https://www.linkedin.com/in/shanmukha007/) |
 
 
 ## Links
